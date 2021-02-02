@@ -19,7 +19,7 @@ function FormularioLogin() {
         display="flex"
         flex=""
         centerContent="true"
-        position="center"
+        justifySelf="center"
       >
         <Container
          
