@@ -1,4 +1,3 @@
-import Home from "./_app";
-
+import Home from "./_app"
 
 export default Home;

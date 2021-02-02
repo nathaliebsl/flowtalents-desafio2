@@ -7,6 +7,7 @@ import {
   InputGroup,
   Button,
   Image,
+  Grid
 } from "@chakra-ui/react";
 
 
@@ -21,18 +22,22 @@ function FormularioLogin() {
         position="center"
       >
         <Container
-          position="center"
+         
+         
           p="14"
           margin="24"
-          position="fixed"
-          display="block"
+          position="absolute"
+          display="flex"
           border="2px"
           borderRadius="base"
           borderStyle="solid"
-          maxW="md"
+          maxW="sm"
           minW="sm"
-          w="65%"
-          h="65%"
+          
+          centerContent="true"
+          justifySelf="center"
+          
+        
         >
           <Image
             borderRadius="full"
@@ -43,8 +48,8 @@ function FormularioLogin() {
             alt="login vector"
           />
           Bem-vindo ao EstoqueFacil!
-          <Stack h="auto" w="auto" justify="center" align="center" spacing={3}>
-            <InputGroup>
+          <Stack  h="auto" w="100%" justify="center" align="center" spacing={3}>
+            <InputGroup >
               <Input
                 required
                 box-sizing="content-box"
