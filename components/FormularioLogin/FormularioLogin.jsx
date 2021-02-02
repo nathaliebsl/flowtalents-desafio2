@@ -1,8 +1,6 @@
 import React from "react";
 import {
   Flex,
-  Box,
-  Text,
   Container,
   Input,
   Stack,
@@ -34,14 +32,13 @@ function FormularioLogin() {
           minW="sm"
           w="65%"
           h="65%"
-        
         >
           <Image
-          
             borderRadius="full"
             boxShadow="md"
             boxSize="50px"
-            src="https://www.flaticon.com/svg/vstatic/svg/295/295128.svg?token=exp=1612300312~hmac=632d9c8c9109180c57e9dd001095696c"
+            src="../login.png"
+            fallbackSrc="https://via.placeholder.com/150"
             alt="login vector"
           />
           Bem-vindo ao EstoqueFacil!
@@ -56,7 +53,7 @@ function FormularioLogin() {
             </InputGroup>
 
             <InputGroup>
-              <Input  required type="senha" placeholder="senha" />
+              <Input required type="senha" placeholder="senha" />
             </InputGroup>
             <Button onCLick="">Login</Button>
           </Stack>
