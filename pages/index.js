@@ -1,5 +1,4 @@
-function Home() {
-    return <div>Home</div>
-}
+import Home from "./_app";
+
 
 export default Home;
