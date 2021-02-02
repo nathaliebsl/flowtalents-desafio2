@@ -9,6 +9,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 
+
 function FormularioLogin() {
   return (
     <Flex align="center" wrap="wrap">
@@ -37,7 +38,7 @@ function FormularioLogin() {
             borderRadius="full"
             boxShadow="md"
             boxSize="50px"
-            src="../login.png"
+            src="https://www.protectivelife.com.bd/images/icons/Signin.png"
             fallbackSrc="https://via.placeholder.com/150"
             alt="login vector"
           />
