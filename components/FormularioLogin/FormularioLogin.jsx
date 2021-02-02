@@ -48,7 +48,7 @@ function FormularioLogin() {
           <Stack h="auto" w="auto" justify="center" align="center" spacing={3}>
             <InputGroup>
               <Input
-                isRequired="true"
+                required
                 box-sizing="content-box"
                 type="user"
                 placeholder="usuário"
@@ -56,7 +56,7 @@ function FormularioLogin() {
             </InputGroup>
 
             <InputGroup>
-              <Input isRequired="true" type="senha" placeholder="senha" />
+              <Input  required type="senha" placeholder="senha" />
             </InputGroup>
             <Button onCLick="">Login</Button>
           </Stack>
