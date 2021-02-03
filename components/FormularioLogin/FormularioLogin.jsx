@@ -16,11 +16,11 @@ function FormularioLogin() {
 
   return (
     <Flex  position="static" display="flex" justify="center" align="center" flexWrap="wrap" bgColor="rgb(27,60,227);
-    background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);"
+    background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);" margin="auto"
     >
       <Container 
         p="14"
-        margin="32"
+        margin="36"
         position="center"
         display="flex"
         border="2px"
