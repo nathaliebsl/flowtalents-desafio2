@@ -7,9 +7,8 @@ import {
   InputGroup,
   Button,
   Image,
-  Grid,
-  EdgeInsets,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 function FormularioLogin() {
   return (
@@ -62,7 +61,11 @@ function FormularioLogin() {
           <InputGroup>
             <Input required type="senha" placeholder="senha" />
           </InputGroup>
-          <Button onCLick="">Login</Button>
+          <Link href="/usuario" >
+            <a>
+            <Button>Login</Button>
+            </a>
+          </Link>
         </Stack>
       </Container>
     </Flex>

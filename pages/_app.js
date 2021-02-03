@@ -1,8 +1,9 @@
 import React from "react";
 import {
-  ChakraProvider
+  ChakraProvider,
 } from "@chakra-ui/react";
 import FormularioLogin from "../components/FormularioLogin/FormularioLogin";
+
 
 function Home() {
   return (
