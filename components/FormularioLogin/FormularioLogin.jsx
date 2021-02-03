@@ -8,6 +8,7 @@ import {
   Button,
   Image,
   Grid,
+  EdgeInsets
  
 } from "@chakra-ui/react";
 
@@ -15,19 +16,20 @@ function FormularioLogin() {
 
 
   return (
-    <Flex  position="static" display="flex" justify="center" align="center" flexWrap="wrap" bgColor="rgb(27,60,227);
-    background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);" margin="auto"
+    <Flex position="static" display="flex" justify="center" align="center" flexWrap="wrap" bgColor="rgb(27,60,227);
+    background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);" margin="0" height="2xl" width="full"
     >
       <Container 
         p="14"
-        margin="40"
-        position="center"
-        display="flex"
+        margin="36"
+       
         border="2px"
         borderRadius="base"
         borderStyle="hidden"
         maxW="sm"
         minW="sm"
+        minH="sm"
+        maxH="sm"
         centerContent="true"
         justifySelf="center"
         alignContent="center"
