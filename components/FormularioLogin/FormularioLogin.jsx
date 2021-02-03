@@ -15,7 +15,8 @@ function FormularioLogin() {
 
 
   return (
-    <Flex  position="static" display="flex" justify="center" align="center" flexWrap="wrap" bgColor="black"
+    <Flex  position="static" display="flex" justify="center" align="center" flexWrap="wrap" bgColor="rgb(27,60,227);
+    background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);"
     >
       <Container 
         p="14"
@@ -24,7 +25,7 @@ function FormularioLogin() {
         display="flex"
         border="2px"
         borderRadius="base"
-        borderStyle="solid"
+        borderStyle="hidden"
         maxW="sm"
         minW="sm"
         centerContent="true"
@@ -40,7 +41,7 @@ function FormularioLogin() {
           fallbackSrc="https://via.placeholder.com/150"
           alt="login vector"
         />
-        Bem-vindo ao EstoqueFacil!
+        Bem-vindo ao EstoqueFácil!
         <Stack h="auto" w="100%" justify="center" align="center" spacing={3}>
           <InputGroup>
             <Input
