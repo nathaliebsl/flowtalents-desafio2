@@ -8,7 +8,7 @@ import FormularioLogin from "../components/FormularioLogin/FormularioLogin";
 function Home() {
   return (
     <ChakraProvider>
-      <FormularioLogin /> 
+      <FormularioLogin/>
     </ChakraProvider>
   );
 }

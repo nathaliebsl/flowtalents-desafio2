@@ -1,3 +1,13 @@
-import Home from "./_app"
+import Home from "./_app";
+import React from "react";
 
-export default Home;
+
+function App() {
+  return (
+    <>
+      <Home />
+    </>
+  );
+}
+
+export default App;

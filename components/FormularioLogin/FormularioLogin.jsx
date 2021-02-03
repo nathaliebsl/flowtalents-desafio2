@@ -13,15 +13,16 @@ import Link from "next/link";
 function FormularioLogin() {
   return (
     <Flex
-      position="static"
-      display="flex"
-      justify="center"
-      align="center"
-      flexWrap="wrap"
+      // position="relative"
+      // display="flex"
+      // justify="center"
+      // align="center"
+      // flexWrap="wrap"
       bgColor="rgb(27,60,227);
     background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);"
       margin="0"
-      height="2xl"
+      minH="2xl"
+      height="auto"
       width="full"
     >
       <Container
@@ -61,10 +62,8 @@ function FormularioLogin() {
           <InputGroup>
             <Input required type="senha" placeholder="senha" />
           </InputGroup>
-          <Link href="/usuario" >
-            <a>
+          <Link className="login-link" href="/conta" as="/minhaconta">
             <Button>Login</Button>
-            </a>
           </Link>
         </Stack>
       </Container>
