@@ -93,22 +93,22 @@ function CatalogoProdutos() {
 
   return (
     <Box
-      bgColor="Menu"
+      bgColor="whiteAlpha.100"
       mt="10"
       mr="2"
       ml="2"
       borderRadius="base"
       borderWidth="1px"
       borderRadius="lg"
-     overflow="scroll"
-      
+      overflow="scroll"
     >
       <Table {...getTableProps()}>
         <Thead>
           {headerGroups.map((headerGroup) => (
             <Tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <Th textAlign="center"
+                <Th
+                  textAlign="center"
                   {...column.getHeaderProps(column.getSortByToggleProps())}
                   isNumeric={column.isNumeric}
                 >
@@ -133,7 +133,8 @@ function CatalogoProdutos() {
             return (
               <Tr {...row.getRowProps()}>
                 {row.cells.map((cell) => (
-                  <Td textAlign="center"
+                  <Td
+                    textAlign="center"
                     {...cell.getCellProps()}
                     isNumeric={cell.column.isNumeric}
                   >
