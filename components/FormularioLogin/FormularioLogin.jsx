@@ -20,7 +20,7 @@ function FormularioLogin() {
     >
       <Container 
         p="14"
-        margin="36"
+        margin="40"
         position="center"
         display="flex"
         border="2px"
