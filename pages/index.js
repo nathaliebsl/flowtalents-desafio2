@@ -1,6 +1,6 @@
 import MyApp from "./_app";
 import React from "react";
-import FormularioLogin from "../components/FormularioLogin/FormularioLogin";
+import FormularioLogin from "../components/FormularioLogin/FormularioLogin"
 
 
 

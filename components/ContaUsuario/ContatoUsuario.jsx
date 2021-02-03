@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 
-function ContaUsuario() {
+function ContatoUsuario() {
   return (
     <>
       <Flex
@@ -32,16 +32,19 @@ function ContaUsuario() {
           </Heading>
         </Box>
         <Spacer />
-        <Wrap >
+        <Wrap>
           <WrapItem>
-            <Stack align="center" direction="row" color="whiteAlpha.800"> 
-            <Link href="/contato">
-              <Button colorScheme="white" mr="2">
-                Contato
-              </Button>
-              </Link> 
-              <Avatar size="sm" bgColor="black" color="Highlight"  name="Nathalie" />
-              <Text >Nathalie</Text>
+            <Stack align="center" direction="row" color="whiteAlpha.800">
+              <Link href="/conta" as="/minhaconta">
+                <Button colorScheme="white" mr="2">Minha Conta</Button>
+              </Link>
+              <Avatar
+                size="sm"
+                bgColor="black"
+                color="Highlight"
+                name="Nathalie"
+              />
+              <Text>Nathalie</Text>
             </Stack>
           </WrapItem>
         </Wrap>
@@ -50,4 +53,4 @@ function ContaUsuario() {
   );
 }
 
-export default ContaUsuario;
+export default ContatoUsuario;

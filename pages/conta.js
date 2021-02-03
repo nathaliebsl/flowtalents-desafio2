@@ -1,15 +1,15 @@
 import React from 'react';
-import Link from "next/link";
+import ContaUsuario from '../components/ContaUsuario/ContaUsuario';
+import CatalogoProdutos from '../components/ContaUsuario/CatalogoProdutos';
 
 function HomeUsuario() {
     return (
 
         
-        <div>
-        <h1>Home do usuário</h1>
-        <Link href="/">Voltar</Link>
-        
-        </div>
+        <>
+            <ContaUsuario />
+            <CatalogoProdutos />
+        </>
     )
 }
 

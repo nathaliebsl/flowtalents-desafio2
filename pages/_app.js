@@ -1,6 +1,5 @@
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
-import FormularioLogin from "../components/FormularioLogin/FormularioLogin";
 import App from "next/app";
 
 function MyApp({ Component, pageProps }) {
