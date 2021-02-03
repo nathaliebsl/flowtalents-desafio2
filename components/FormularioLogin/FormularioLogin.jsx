@@ -7,22 +7,27 @@ import {
   InputGroup,
   Button,
   Image,
+  Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
 function FormularioLogin() {
   return (
     <Flex
-      // position="relative"
+      position="fixed"
+      bottom="0"
+      top="0"
+      right="0"
+      left="0"
       // display="flex"
       // justify="center"
       // align="center"
       // flexWrap="wrap"
       bgColor="rgb(27,60,227);
     background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);"
-      margin="0"
-      minH="2xl"
-      height="auto"
+      // margin="0"
+      minH="100%"
+      height="100%"
       width="full"
     >
       <Container
@@ -48,8 +53,8 @@ function FormularioLogin() {
           fallbackSrc="https://via.placeholder.com/150"
           alt="login vector"
         />
-        Bem-vindo ao EstoqueFácil!
-        <Stack h="auto" w="100%" justify="center" align="center" spacing={3}>
+        <Text p="3"> Bem-vindo ao EstoqueFácil! </Text>
+        <Stack h="auto" w="100%" spacing={2}>
           <InputGroup>
             <Input
               required
@@ -60,11 +65,18 @@ function FormularioLogin() {
           </InputGroup>
 
           <InputGroup>
-            <Input required type="senha" placeholder="senha" />
+            <Input
+              boxSizing="content-box"
+              required
+              type="senha"
+              placeholder="senha"
+            />
           </InputGroup>
-          <Link className="login-link" href="/conta" as="/minhaconta">
-            <Button>Login</Button>
-          </Link>
+          <InputGroup justifyContent="center">
+            <Link className="login-link" href="/conta" as="/minhaconta">
+              <Button w="50%">Login</Button>
+            </Link>
+          </InputGroup>
         </Stack>
       </Container>
     </Flex>
