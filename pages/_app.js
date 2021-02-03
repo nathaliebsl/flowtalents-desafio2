@@ -1,16 +1,22 @@
 import React from "react";
-import {
-  ChakraProvider,
-} from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 import FormularioLogin from "../components/FormularioLogin/FormularioLogin";
+import App from "next/app";
 
-
-function Home() {
+function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
-      <FormularioLogin/>
-    </ChakraProvider>
+    <>
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </>
   );
 }
 
-export default Home;
+MyApp.getInitialProps = async (ctx) => {
+  const appProps = await App.getInitialProps(ctx);
+
+  return { ...appProps };
+};
+
+export default MyApp;

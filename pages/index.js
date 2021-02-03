@@ -1,13 +1,15 @@
-import Home from "./_app";
+import MyApp from "./_app";
 import React from "react";
+import FormularioLogin from "../components/FormularioLogin/FormularioLogin";
 
 
-function App() {
+
+function Index() {
   return (
     <>
-      <Home />
+      <MyApp Component={FormularioLogin} />
     </>
   );
 }
 
-export default App;
+export default Index;
