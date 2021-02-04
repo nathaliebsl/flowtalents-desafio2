@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Table,
   Thead,
@@ -7,46 +7,43 @@ import {
   Th,
   Td,
   chakra,
-  Wrap,
-  Flex,
-  WrapItem,
-  Center,
   Box,
+  Link,
 } from "@chakra-ui/react";
 import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
-import {
-  useTable,
-  useSortBy,
-  useAbsoluteLayout,
-  useFlexLayout,
-} from "react-table";
+import { useTable, useSortBy } from "react-table";
+import axios from "axios";
+import { getDisplayName } from "next/dist/next-server/lib/utils";
+import produtoArray from "../../context/produto";
 
 function CatalogoProdutos() {
-  const data = React.useMemo(
-    () => [
+    const [produtos, setProdutos] = useState({});
+    
+    async function catalogo(request, response) {
+
+
+    const listaProdutos = await fetch("https://601b1b840ee87c001706b013.mockapi.io/products?");
+    const listaProdutosJson = await listaProdutos.json();
+
+                response.json({
+                    produtos: listaProdutosJson
+                })
+              
+          
+            return listaProdutosJson
+
+  }
+
+//   const data = React.useMemo(
+        const data = produtos.forEach(product =>  {
+        [ 
       {
-        setIMG: "img",
-        getID: "id",
-        getProduto: "Produto",
-        getCategoria: "Categoria",
-        getRelevancia: "Relevancia",
-        setFavorito: "Favorito",
-      },
-      {
-        setIMG: "img",
-        getID: "id",
-        getProduto: "Produto",
-        getCategoria: "Categoria",
-        getRelevancia: "Relevancia",
-        setFavorito: "Favorito",
-      },
-      {
-        setIMG: "img",
-        getID: "id",
-        getProduto: "Produto",
-        getCategoria: "Categoria",
-        getRelevancia: "Relevancia",
-        setFavorito: "Favorito",
+        id: product.id,
+        img: product.img,
+        name: product.name,
+        categoria: product.categoria,
+        relevancia: product.relevancia,
+        favorito: product.favorito,
       },
     ],
     []
@@ -56,28 +53,28 @@ function CatalogoProdutos() {
     () => [
       {
         Header: "",
-        accessor: "setIMG",
+        accessor: "avatar",
       },
       {
         Header: "ID",
-        accessor: "getID",
+        accessor: "id",
         inNumeric: true,
       },
       {
         Header: "Produto",
-        accessor: "getProduto",
+        accessor: "name",
       },
       {
         Header: "Categoria",
-        accessor: "getCategoria",
+        accessor: "categoria",
       },
       {
         Header: "Relevancia",
-        accessor: "getRelevancia",
+        accessor: "relevancia",
       },
       {
         Header: "Favorito",
-        accessor: "setFavorito",
+        accessor: "favorito",
       },
     ],
     []

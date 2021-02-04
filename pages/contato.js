@@ -1,11 +1,13 @@
-import { Container } from "@chakra-ui/react";
+
 import React from "react";
-import ContatoUsuario from "../components/ContaUsuario/ContatoUsuario";
+import ContatoUsuario from "../components/FormularioContato/ContatoUsuario";
+import FormularioContato from "../components/FormularioContato/FormularioContato"
 
 function Contato() {
   return (
     <>
       <ContatoUsuario />
+      {/* <FormularioContato /> */}
     </>
   );
 }
