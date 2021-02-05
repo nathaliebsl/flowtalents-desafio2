@@ -9,11 +9,15 @@ import {
   Td,
   Tfoot,
   Box,
+  Checkbox,
   Image,
 } from "@chakra-ui/react";
 
-function CatalogoProdutosTeste() {
+
+
+function CatalogoProdutos() {
   const [products, setProducts] = useState([]);
+  const [favorito, setFavorito] = useState(false);
 
   function getProducts() {
     fetch("https://601b1b840ee87c001706b013.mockapi.io/products")
@@ -25,33 +29,67 @@ function CatalogoProdutosTeste() {
       });
   }
 
+//   const prodsById = products.map(product => {
+//     const container = {};
+
+//     container.id = product.id;
+//     container.favorito = product.favorito;
+
+//     return container;
+// })
+
+//     console.log(prodsById);
+
+  function isFavorito(e, id) {
+    console.log(e, id);
+    fetch(`https://601b1b840ee87c001706b013.mockapi.io/products/${id}`,
+    {
+        method: "PUT",
+        headers: {
+            "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          favorito: e,
+        }),
+    }
+    ).then(() => {
+        setFavorito();
+    })
+  };
+
+  useEffect(() => {
+    getProducts();
+    // isFavorito();
+  }, []);
+
   function renderTableData() {
     return products.map((product, index) => {
-      const { id, name, descricao, relevancia, avatar } = product;
+      const { id, name, descricao, relevancia, avatar, categoria, favorito } = product;
       return (
         <Tr key={id}>
           <Td textAlign="center">
             <Image
               borderRadius="full"
               boxShadow="md"
-              boxSize="auto"
+              boxSize=""
+              maxW="16"
+              maxH="16"
               alt="product"
               fallbackSrc="https://via.placeholder.com/150"
-              scr={(toString(avatar))}
+              scr={toString(avatar)}
             ></Image>
           </Td>
           <Td textAlign="center">{id}</Td>
           <Td textAlign="center">{name}</Td>
+          <Td textAlign="center">{categoria}</Td>
           <Td textAlign="center">{descricao}</Td>
           <Td textAlign="center">{relevancia}</Td>
+          <Td textAlign="center"> <Checkbox onChange={(event) => {isFavorito(event.target.checked, id)}} defaultChecked={favorito} checked={favorito} colorScheme="red" border="ButtonHighlight" ></Checkbox></Td>
+           
         </Tr>
       );
     });
   }
-
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   return (
     <Box
@@ -68,42 +106,30 @@ function CatalogoProdutosTeste() {
         <TableCaption>Catálogo de Produtos</TableCaption>
         <Thead>
           <Tr>
-            <Th textAlign="center">""</Th>
+            <Th textAlign="center"></Th>
             <Th textAlign="center">ID</Th>
             <Th textAlign="center">Produto</Th>
+            <Th textAlign="center">Categoria</Th>
             <Th textAlign="center">Descrição</Th>
             <Th textAlign="center">Relevancia</Th>
             <Th textAlign="center">Favorito</Th>
           </Tr>
         </Thead>
-        <Tbody>
-          {renderTableData()}
-          {/* <Tr>
-            <Td textAlign="center">inches</Td>
-            <Td textAlign="center">millimetres (mm)</Td>
-            <Td textAlign="center">25.4</Td>
-          </Tr>
+        <Tbody>{renderTableData()}</Tbody>
+        <Tfoot>
           <Tr>
-            <Td textAlign="center">feet</Td>
-            <Td textAlign="center">centimetres (cm)</Td>
-            <Td textAlign="center">30.48</Td>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th></Th>
+            <Th>Selecione</Th>
+            <Th>Selecione</Th>
           </Tr>
-          <Tr>
-            <Td textAlign="center">yards</Td>
-            <Td textAlign="center">metres (m)</Td>
-            <Td textAlign="center">0.91444</Td>
-          </Tr> */}
-        </Tbody>
-        {/* <Tfoot>
-          <Tr>
-            <Th>To convert</Th>
-            <Th>into</Th>
-            <Th isNumeric>multiply by</Th>
-          </Tr>
-        </Tfoot> */}
+        </Tfoot>
       </Table>
     </Box>
   );
 }
 
-export default CatalogoProdutosTeste;
+export default CatalogoProdutos;
