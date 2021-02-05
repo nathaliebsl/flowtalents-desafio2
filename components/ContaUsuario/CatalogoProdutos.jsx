@@ -1,103 +1,57 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
+  TableCaption,
   Thead,
-  Tbody,
   Tr,
   Th,
+  Tbody,
   Td,
-  chakra,
+  Tfoot,
   Box,
-  Link,
+  Image,
 } from "@chakra-ui/react";
-import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
-import { useTable, useSortBy } from "react-table";
-import axios from "axios";
-import { getDisplayName } from "next/dist/next-server/lib/utils";
-import produtoArray from "../../context/produto";
 
-function CatalogoProdutos() {
-    const [products, setProducts] = useState([]);
+function CatalogoProdutosTeste() {
+  const [products, setProducts] = useState([]);
 
-    function getProducts() {
-      fetch('https://601b1b840ee87c001706b013.mockapi.io/products')
+  function getProducts() {
+    fetch("https://601b1b840ee87c001706b013.mockapi.io/products")
       .then((response) => {
         return response.json();
       })
       .then((json) => {
         setProducts(json);
       });
-    }
+  }
 
-      useEffect(() => {
-        getProducts();
-    },[] );
+  function renderTableData() {
+    return products.map((product, index) => {
+      const { id, name, descricao, relevancia, avatar } = product;
+      return (
+        <Tr key={id}>
+          <Td textAlign="center">
+            <Image
+              borderRadius="full"
+              boxShadow="md"
+              boxSize="auto"
+              alt="product"
+              fallbackSrc="https://via.placeholder.com/150"
+              scr={(toString(avatar))}
+            ></Image>
+          </Td>
+          <Td textAlign="center">{id}</Td>
+          <Td textAlign="center">{name}</Td>
+          <Td textAlign="center">{descricao}</Td>
+          <Td textAlign="center">{relevancia}</Td>
+        </Tr>
+      );
+    });
+  }
 
-        const data = React.useMemo(
-          () => [
-                {
-                  id: "oi",
-                  avatar: "foto",
-                  name: "banana",
-                  categoria: "",
-                  relevancia: "",
-                  favorito: "",
-                }
-              ],   
-              [],
-          );
-
-        // const prods = products.map((item) => {
-        //     const container = [];
-        //     const i = products.length-1
-        
-        //    container[item] = (item.id, item.name, item.avatar, item.categoria, item.relevancia, item.favorito);
-        
-        //     return container;
-        // })
-
-        // console.log(data);
-
-
-
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "",
-        accessor: "avatar",
-      },
-      {
-        Header: "ID",
-        accessor: "id",
-        inNumeric: true,
-      },
-      {
-        Header: "Produto",
-        accessor: "name",
-      },
-      {
-        Header: "Categoria",
-        accessor: "categoria",
-      },
-      {
-        Header: "Relevancia",
-        accessor: "relevancia",
-      },
-      {
-        Header: "Favorito",
-        accessor: "favorito",
-      },
-    ],
-    []
-  );
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({ columns, data }, useSortBy);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <Box
@@ -110,53 +64,46 @@ function CatalogoProdutos() {
       borderRadius="lg"
       overflow="scroll"
     >
-      <Table {...getTableProps()}>
+      <Table variant="simple">
+        <TableCaption>Catálogo de Produtos</TableCaption>
         <Thead>
-          {headerGroups.map((headerGroup) => (
-            <Tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <Th
-                  textAlign="center"
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                  isNumeric={column.isNumeric}
-                >
-                  {column.render("Header")}
-                  <chakra.span pl="1">
-                    {column.isSorted ? (
-                      column.isSortedDesc ? (
-                        <TriangleDownIcon aria-label="sorted descending" />
-                      ) : (
-                        <TriangleUpIcon aria-label="sorted ascending" />
-                      )
-                    ) : null}
-                  </chakra.span>
-                </Th>
-              ))}
-            </Tr>
-          ))}
+          <Tr>
+            <Th textAlign="center">""</Th>
+            <Th textAlign="center">ID</Th>
+            <Th textAlign="center">Produto</Th>
+            <Th textAlign="center">Descrição</Th>
+            <Th textAlign="center">Relevancia</Th>
+            <Th textAlign="center">Favorito</Th>
+          </Tr>
         </Thead>
-        <Tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
-            prepareRow(row);
-            return (
-              <Tr {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <Td
-                    textAlign="center"
-                    {...cell.getCellProps()}
-                    isNumeric={cell.column.isNumeric}
-                  >
-                    {cell.render("Cell")}
-                  </Td>
-                ))}
-              </Tr>
-            );
-          })}
+        <Tbody>
+          {renderTableData()}
+          {/* <Tr>
+            <Td textAlign="center">inches</Td>
+            <Td textAlign="center">millimetres (mm)</Td>
+            <Td textAlign="center">25.4</Td>
+          </Tr>
+          <Tr>
+            <Td textAlign="center">feet</Td>
+            <Td textAlign="center">centimetres (cm)</Td>
+            <Td textAlign="center">30.48</Td>
+          </Tr>
+          <Tr>
+            <Td textAlign="center">yards</Td>
+            <Td textAlign="center">metres (m)</Td>
+            <Td textAlign="center">0.91444</Td>
+          </Tr> */}
         </Tbody>
+        {/* <Tfoot>
+          <Tr>
+            <Th>To convert</Th>
+            <Th>into</Th>
+            <Th isNumeric>multiply by</Th>
+          </Tr>
+        </Tfoot> */}
       </Table>
     </Box>
   );
 }
 
-
-export default CatalogoProdutos;
+export default CatalogoProdutosTeste;

@@ -1,7 +1,6 @@
 import React from 'react';
 import ContaUsuario from '../components/ContaUsuario/ContaUsuario';
-import CatalogoProdutos from '../components/ContaUsuario/CatalogoProdutos';
-import CatalogoProdutosTeste from '../components/ContaUsuario/CatalogoProdutosTeste'
+import CatalogoProdutos from '../components/ContaUsuario/CatalogoProdutos'
 
 
 function HomeUsuario() {
@@ -10,7 +9,7 @@ function HomeUsuario() {
         
         <>
             <ContaUsuario />
-            <CatalogoProdutosTeste />
+            <CatalogoProdutos />
         </>
     )
 }
