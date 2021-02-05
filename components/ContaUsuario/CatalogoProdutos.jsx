@@ -12,8 +12,8 @@ import {
   Checkbox,
   Image,
 } from "@chakra-ui/react";
-
-
+import { Icon } from "@chakra-ui/icons";
+import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 
 function CatalogoProdutos() {
   const [products, setProducts] = useState([]);
@@ -29,33 +29,31 @@ function CatalogoProdutos() {
       });
   }
 
-//   const prodsById = products.map(product => {
-//     const container = {};
+  //   const prodsById = products.map(product => {
+  //     const container = {};
 
-//     container.id = product.id;
-//     container.favorito = product.favorito;
+  //     container.id = product.id;
+  //     container.favorito = product.favorito;
 
-//     return container;
-// })
+  //     return container;
+  // })
 
-//     console.log(prodsById);
+  //     console.log(prodsById);
 
   function isFavorito(e, id) {
     console.log(e, id);
-    fetch(`https://601b1b840ee87c001706b013.mockapi.io/products/${id}`,
-    {
-        method: "PUT",
-        headers: {
-            "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          favorito: e,
-        }),
-    }
-    ).then(() => {
-        setFavorito();
-    })
-  };
+    fetch(`https://601b1b840ee87c001706b013.mockapi.io/products/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        favorito: e,
+      }),
+    }).then(() => {
+      setFavorito();
+    });
+  }
 
   useEffect(() => {
     getProducts();
@@ -64,19 +62,27 @@ function CatalogoProdutos() {
 
   function renderTableData() {
     return products.map((product, index) => {
-      const { id, name, descricao, relevancia, avatar, categoria, favorito } = product;
+      const {
+        id,
+        name,
+        descricao,
+        relevancia,
+        avatar,
+        categoria,
+        favorito,
+      } = product;
       return (
         <Tr key={id}>
           <Td textAlign="center">
             <Image
-              borderRadius="full"
+              borderRadius="base"
               boxShadow="md"
               boxSize=""
               maxW="16"
               maxH="16"
               alt="product"
-              fallbackSrc="https://via.placeholder.com/150"
-              scr={toString(avatar)}
+              fallbackSrc="https://www.rastanley.com.au/img/products/NoImageLarge.png"
+              src={avatar}
             ></Image>
           </Td>
           <Td textAlign="center">{id}</Td>
@@ -84,8 +90,18 @@ function CatalogoProdutos() {
           <Td textAlign="center">{categoria}</Td>
           <Td textAlign="center">{descricao}</Td>
           <Td textAlign="center">{relevancia}</Td>
-          <Td textAlign="center"> <Checkbox onChange={(event) => {isFavorito(event.target.checked, id)}} defaultChecked={favorito} checked={favorito} colorScheme="red" border="ButtonHighlight" ></Checkbox></Td>
-           
+          <Td textAlign="center">
+            <Checkbox
+              onChange={(event) => {
+                isFavorito(event.target.checked, id);
+              }}
+              defaultChecked={favorito}
+              checked={favorito}
+              colorScheme="red"
+              border="ButtonHighlight"
+            >
+            </Checkbox>
+          </Td>
         </Tr>
       );
     });
