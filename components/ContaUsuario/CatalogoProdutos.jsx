@@ -11,13 +11,17 @@ import {
   Box,
   Checkbox,
   Image,
+  useToast
 } from "@chakra-ui/react";
-import { Icon } from "@chakra-ui/icons";
-import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
+import Rating from '@material-ui/lab/Rating';
+import Typography from '@material-ui/core/Typography';
 
-function CatalogoProdutos() {
+
+
+ function CatalogoProdutos() {
   const [products, setProducts] = useState([]);
   const [favorito, setFavorito] = useState(false);
+  const [relevancia, setRelevancia] = useState();
 
   function getProducts() {
     fetch("https://601b1b840ee87c001706b013.mockapi.io/products")
@@ -28,17 +32,6 @@ function CatalogoProdutos() {
         setProducts(json);
       });
   }
-
-  //   const prodsById = products.map(product => {
-  //     const container = {};
-
-  //     container.id = product.id;
-  //     container.favorito = product.favorito;
-
-  //     return container;
-  // })
-
-  //     console.log(prodsById);
 
   function isFavorito(e, id) {
     console.log(e, id);
@@ -55,12 +48,47 @@ function CatalogoProdutos() {
     });
   }
 
+  function isRelevant(e, id) {
+    console.log(e, id);
+    fetch(`https://601b1b840ee87c001706b013.mockapi.io/products/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        ...relevancia,
+        relevancia: [e],
+      }),
+    }).then(() => {
+      setRelevancia();
+    });
+  }
+
   useEffect(() => {
     getProducts();
     // isFavorito();
   }, []);
 
+  function SimpleRating(relevancia) {
+  
+    return (
+      
+        <Box component="fieldset" mb={3} borderColor="transparent">
+          <Typography component="legend"></Typography>
+          <Rating
+            name="simple-controlled"
+            defaultValue={relevancia}
+            value={relevancia}
+            onChange={(event, newValue) => {
+              isRelevant(event.target.value, newValue);
+            }}
+          />
+        </Box>
+    )
+  }
+
   function renderTableData() {
+    const toast = useToast()
     return products.map((product, index) => {
       const {
         id,
@@ -89,7 +117,7 @@ function CatalogoProdutos() {
           <Td textAlign="center">{name}</Td>
           <Td textAlign="center">{categoria}</Td>
           <Td textAlign="center">{descricao}</Td>
-          <Td textAlign="center">{relevancia}</Td>
+          <Td textAlign="center">{SimpleRating(relevancia)}</Td>
           <Td textAlign="center">
             <Checkbox
               onChange={(event) => {
