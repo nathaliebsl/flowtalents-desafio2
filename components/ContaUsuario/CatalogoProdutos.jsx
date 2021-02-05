@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
   Table,
   Thead,
@@ -17,37 +17,48 @@ import { getDisplayName } from "next/dist/next-server/lib/utils";
 import produtoArray from "../../context/produto";
 
 function CatalogoProdutos() {
-    const [produtos, setProdutos] = useState({});
-    
-    async function catalogo(request, response) {
+    const [products, setProducts] = useState([]);
+
+    function getProducts() {
+      fetch('https://601b1b840ee87c001706b013.mockapi.io/products')
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        setProducts(json);
+      });
+    }
+
+      useEffect(() => {
+        getProducts();
+    },[] );
+
+        const data = React.useMemo(
+          () => [
+                {
+                  id: "oi",
+                  avatar: "foto",
+                  name: "banana",
+                  categoria: "",
+                  relevancia: "",
+                  favorito: "",
+                }
+              ],   
+              [],
+          );
+
+        // const prods = products.map((item) => {
+        //     const container = [];
+        //     const i = products.length-1
+        
+        //    container[item] = (item.id, item.name, item.avatar, item.categoria, item.relevancia, item.favorito);
+        
+        //     return container;
+        // })
+
+        // console.log(data);
 
 
-    const listaProdutos = await fetch("https://601b1b840ee87c001706b013.mockapi.io/products?");
-    const listaProdutosJson = await listaProdutos.json();
-
-                response.json({
-                    produtos: listaProdutosJson
-                })
-              
-          
-            return listaProdutosJson
-
-  }
-
-//   const data = React.useMemo(
-        const data = produtos.forEach(product =>  {
-        [ 
-      {
-        id: product.id,
-        img: product.img,
-        name: product.name,
-        categoria: product.categoria,
-        relevancia: product.relevancia,
-        favorito: product.favorito,
-      },
-    ],
-    []
-  );
 
   const columns = React.useMemo(
     () => [
@@ -146,5 +157,6 @@ function CatalogoProdutos() {
     </Box>
   );
 }
+
 
 export default CatalogoProdutos;

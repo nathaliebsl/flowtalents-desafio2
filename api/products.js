@@ -1,15 +1,32 @@
 
-const listarProdutos = () => { 
-    return fetch("https://601b1b840ee87c001706b013.mockapi.io/products")
-    .then(res => { return res.json()
-    })
-    .then (json => {
-      return json;
-    })
-}
+// const listarProdutos = () => { 
+//     return fetch("https://601b1b840ee87c001706b013.mockapi.io/products")
+//     .then(res => { return res.data.json()
+//     })
+//     .then (json => {
+//       return json;
+//     })
+// }
 
-
-export {
-  listarProdutos,
+// const editaProduto = (id, favorito, relevancia) => {
+//   const json = JSON.stringify({
+//     favorito: favorito,
+//     relevancia: relevancia
+//   })
+//   return fetch(`https://601b1b840ee87c001706b013.mockapi.io/products/${id}`, {
+//     method: 'PUT', 
+//     headers: {
+//       'Content-type': 'application/json'
+//   },
   
-}
+//   body: json
+
+//   })
+// }
+
+
+// export {
+//   listarProdutos,
+//   editaProduto,
+  
+// }
