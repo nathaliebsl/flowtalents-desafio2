@@ -20,11 +20,10 @@ import { AddIcon } from "@chakra-ui/icons";
 function CatalogoProdutos() {
   const [products, setProducts] = useState([]);
   const [favorito, setFavorito] = useState(false);
-  const [relevancia, setRelevancia] = useState();
-  const [clicks, setClicks] = useState(0);
+  const [rating, setRating] = useState();
 
   function getProducts() {
-    fetch("https://601b1b840ee87c001706b013.mockapi.io/products")
+    fetch("https://challenge-products-api.herokuapp.com/produtos")
       .then((response) => {
         return response.json();
       })
@@ -50,17 +49,17 @@ function CatalogoProdutos() {
 
   function isRelevant(e, product) {
     console.log(e, product.id);
-    fetch(`https://601b1b840ee87c001706b013.mockapi.io/products/${product.id}`, {
+    fetch(`https://challenge-products-api.herokuapp.com/produtos/${product.id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
         ...product,
-        relevancia: parseInt(product.relevancia) +1,
+        rating: parseInt(product.rating) +1,
       }),
     }).then(() => {
-      setRelevancia();
+      setRating();
       getProducts();
     });
   }
@@ -106,11 +105,11 @@ function CatalogoProdutos() {
     return products.map((product) => {
       const {
         id,
-        name,
-        descricao,
-        relevancia,
-        avatar,
-        categoria,
+        title,
+        description,
+        rating,
+        image,
+        category,
         favorito,
       } = product;
       return (
@@ -124,16 +123,16 @@ function CatalogoProdutos() {
               maxH="16"
               alt="product"
               fallbackSrc="https://www.rastanley.com.au/img/products/NoImageLarge.png"
-              src={avatar}
+              src={image}
             ></Image>
           </Td>
           <Td textAlign="center">{id}</Td>
-          <Td textAlign="center">{name}</Td>
-          <Td textAlign="center">{categoria}</Td>
-          <Td textAlign="center">{descricao}</Td>
+          <Td textAlign="center">{title}</Td>
+          <Td textAlign="center">{category}</Td>
+          <Td textAlign="center">{description}</Td>
           <Td textAlign="center">
             <ButtonGroup size="sm" isAttached variant="outline">
-              <Button mr="-px">{relevancia}</Button>
+              <Button mr="-px">{rating}</Button>
               <IconButton
                 onClick={(event) => {
                   isRelevant(event, product)
