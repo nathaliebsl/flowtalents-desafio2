@@ -15,7 +15,7 @@ import {
   Button,
   IconButton,
 } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
+import { AddIcon, StarIcon } from "@chakra-ui/icons";
 
 function CatalogoProdutos() {
   const [products, setProducts] = useState([]);
@@ -49,59 +49,29 @@ function CatalogoProdutos() {
 
   function isRelevant(e, product) {
     console.log(e, product.id);
-    fetch(`https://challenge-products-api.herokuapp.com/produtos/${product.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        ...product,
-        rating: parseInt(product.rating) +1,
-      }),
-    }).then(() => {
+    fetch(
+      `https://challenge-products-api.herokuapp.com/produtos/${product.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          ...product,
+          rating: parseInt(product.rating) + 1,
+        }),
+      }
+    ).then(() => {
       setRating();
       getProducts();
     });
   }
-
-  // function isRelevant(e, id) {
-  //   console.log(e, id);
-  //   fetch(`https://601b1b840ee87c001706b013.mockapi.io/products/${id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       // ...relevancia,
-  //       relevancia: e,
-  //     }),
-  //   }).then(() => {
-  //     setRelevancia();
-  //   });
-  // }
-
-  // function SimpleRating(relevancia) {
-  //   return (
-  //     <Box component="fieldset" mb={3} borderColor="transparent">
-  //       <Typography component="legend"></Typography>
-  //       <Rating
-  //         name="simple-controlled"
-  //         defaultValue={0}
-  //         value={relevancia}
-  //         onChange={(event, newValue) => {
-  //           isRelevant(event.target.value, newValue);
-  //         }}
-  //       />
-  //     </Box>
-  //   );
-  // }
 
   useEffect(() => {
     getProducts();
   }, []);
 
   function renderTableData() {
-    // const toast = useToast()
     return products.map((product) => {
       const {
         id,
@@ -119,7 +89,7 @@ function CatalogoProdutos() {
               borderRadius="base"
               boxShadow="md"
               boxSize=""
-              maxW="16"
+              maxW="20"
               maxH="16"
               alt="product"
               fallbackSrc="https://www.rastanley.com.au/img/products/NoImageLarge.png"
@@ -132,12 +102,16 @@ function CatalogoProdutos() {
           <Td textAlign="center">{description}</Td>
           <Td textAlign="center">
             <ButtonGroup size="sm" isAttached variant="outline">
-              <Button mr="-px">{rating}</Button>
+              <Button
+                mr="-px"
+                leftIcon={<StarIcon mb="3px" mt="1px" color="goldenrod" />}
+              >
+                {rating}
+              </Button>
               <IconButton
                 onClick={(event) => {
-                  isRelevant(event, product)
-                }
-                }
+                  isRelevant(event, product);
+                }}
                 aria-label="Add relevância"
                 icon={<AddIcon />}
               />
@@ -180,7 +154,7 @@ function CatalogoProdutos() {
             <Th textAlign="center">Produto</Th>
             <Th textAlign="center">Categoria</Th>
             <Th textAlign="center">Descrição</Th>
-            <Th textAlign="center">Relevancia</Th>
+            <Th textAlign="center">Relevância</Th>
             <Th textAlign="center">Favorito</Th>
           </Tr>
         </Thead>
@@ -192,7 +166,7 @@ function CatalogoProdutos() {
             <Th></Th>
             <Th></Th>
             <Th></Th>
-            <Th>Selecione</Th>
+            <Th>Add relevância</Th>
             <Th>Selecione</Th>
           </Tr>
         </Tfoot>

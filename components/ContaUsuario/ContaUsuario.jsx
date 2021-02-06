@@ -28,7 +28,7 @@ function ContaUsuario() {
       >
         <Box p="2">
           <Heading color="white" size="md">
-            Estoque Fácil
+            EstoqueFácil
           </Heading>
         </Box>
         <Spacer />
@@ -40,8 +40,8 @@ function ContaUsuario() {
                 Contato
               </Button>
               </Link> 
-              <Avatar size="sm" bgColor="black" color="Highlight"  name="Nathalie" />
-              <Text >Nathalie</Text>
+              <Avatar size="sm" bgColor="black" color="Highlight"  name="Via Flow" />
+              <Text >ViaFlow</Text>
             </Stack>
           </WrapItem>
         </Wrap>

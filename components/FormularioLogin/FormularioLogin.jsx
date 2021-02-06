@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
   Flex,
   Container,
@@ -12,6 +12,32 @@ import {
 import Link from "next/link";
 
 function FormularioLogin() {
+  const [user, setUser] = useState("viaflow");
+  const [password, setPW] = useState(12345);
+  
+  function logUser(user, password) {
+    console.log(user, password);
+    fetch(`https://challenge-products-api.herokuapp.com/login`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        login: user,
+        password: password
+      }),
+    }).then(() => {
+      // setUser();
+      // setPW();
+    });
+  }
+
+  // useEffect(() => {
+  //   logUser();
+  // }, []);
+
+  console.log(logUser(user, password));
+
   return (
     <Flex
       position="fixed"
@@ -57,6 +83,7 @@ function FormularioLogin() {
         <Stack h="auto" w="100%" spacing={2}>
           <InputGroup>
             <Input
+              value={user}
               required
               box-sizing="content-box"
               type="user"
@@ -66,6 +93,7 @@ function FormularioLogin() {
 
           <InputGroup>
             <Input
+            value={password}
               boxSizing="content-box"
               required
               type="senha"
