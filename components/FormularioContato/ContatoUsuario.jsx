@@ -13,6 +13,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import easyWhImg from "../../assets/img/easywh";
 
 function ContatoUsuario() {
   return (
@@ -27,8 +28,8 @@ function ContatoUsuario() {
         p="2"
       >
         <Box p="2">
-          <Heading color="white" size="md">
-            Estoque Fácil
+          <Heading fontStyle="italic"  color="Highlight" size="md">
+            EstoqueFácil
           </Heading>
         </Box>
         <Spacer />
@@ -36,15 +37,20 @@ function ContatoUsuario() {
           <WrapItem>
             <Stack align="center" direction="row" color="whiteAlpha.800">
               <Link href="/conta" as="/minhaconta">
-                <Button colorScheme="white" mr="2">Minha Conta</Button>
+                <Button borderRadius="full" variant="outline" colorScheme="twitter" mr="2">
+                  Minha Conta
+                </Button>
               </Link>
+              <Button  size="sm" colorScheme="white" variant="ghost" >
               <Avatar
+                mr="2"
                 size="sm"
-                bgColor="black"
-                color="Highlight"
-                name="Nathalie"
+                bgColor="Highlight"
+                color="black"
+                name="Via Flow"
               />
-              <Text>Nathalie</Text>
+              <Text>ViaFlow</Text>
+              </Button>
             </Stack>
           </WrapItem>
         </Wrap>

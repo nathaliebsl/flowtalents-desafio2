@@ -20,14 +20,16 @@ function FormularioContato({ aoEnviar }) {
 
   return (
     <Box
+    position="fixed"
       bgColor="whiteAlpha.100"
-      mt="16"
-      mr="2"
-      ml="2"
+      mt="24"
+      bottom="0"
+      top="0"
+      right="0"
+      left="0"
       borderRadius="base"
       borderStyle="hidden"
       borderWidth="1px"
-      overflow="scroll"
     >
       <Container
         p="10"
@@ -98,21 +100,6 @@ function FormularioContato({ aoEnviar }) {
               type="suggestionbox"
               placeholder="Deixe aqui sua sugestão de produto"
             ></Textarea>
-            {/* <Input
-            
-              h="20"
-              value={sugestao}
-              onChange={(event) => {
-                setSugestao(event.target.value);
-              }}
-              bgColor="white"
-              textColor="black"
-              focusBorderColor="#F56565"
-              boxSizing="content-box"
-              isRequired
-              type="suggestionbox"
-              placeholder="Deixe aqui sua sugestão de produto"
-            /> */}
           </InputGroup>
           <InputGroup justifyContent="center">
             <Button w="40%">Enviar</Button>

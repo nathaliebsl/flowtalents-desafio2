@@ -27,7 +27,7 @@ function ContaUsuario() {
         p="2"
       >
         <Box p="2">
-          <Heading color="white" size="md">
+          <Heading color="Highlight" fontStyle="italic" size="md">
             EstoqueFácil
           </Heading>
         </Box>
@@ -36,12 +36,20 @@ function ContaUsuario() {
           <WrapItem>
             <Stack align="center" direction="row" color="whiteAlpha.800"> 
             <Link href="/contato">
-              <Button colorScheme="white" mr="2">
+              <Button borderRadius="full" variant="outline" colorScheme="twitter" mr="2">
                 Contato
               </Button>
               </Link> 
-              <Avatar size="sm" bgColor="black" color="Highlight"  name="Via Flow" />
-              <Text >ViaFlow</Text>
+              <Button colorScheme="white" size="sm"  variant="ghost" >
+              <Avatar
+                mr="2"
+                size="sm"
+                bgColor="Highlight"
+                color="black"
+                name="Via Flow"
+              />
+              <Text>ViaFlow</Text>
+              </Button>
             </Stack>
           </WrapItem>
         </Wrap>
