@@ -20,9 +20,9 @@ function FormularioContato({ aoEnviar }) {
 
   return (
     <Box
-    position="fixed"
+      position="static"
       bgColor="whiteAlpha.100"
-      mt="24"
+      mt="10"
       bottom="0"
       top="0"
       right="0"
