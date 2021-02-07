@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import {
   Flex,
   Container,
@@ -10,11 +10,12 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import loginImg from "../../assets/img/login.js"
 
 function FormularioLogin() {
   const [user, setUser] = useState("viaflow");
   const [password, setPW] = useState(12345);
-  
+
   function logUser(user, password) {
     console.log(user, password);
     fetch(`https://challenge-products-api.herokuapp.com/login`, {
@@ -24,7 +25,7 @@ function FormularioLogin() {
       },
       body: JSON.stringify({
         login: user,
-        password: password
+        password: password,
       }),
     }).then(() => {
       // setUser();
@@ -45,13 +46,8 @@ function FormularioLogin() {
       top="0"
       right="0"
       left="0"
-      // display="flex"
-      // justify="center"
-      // align="center"
-      // flexWrap="wrap"
       bgColor="rgb(27,60,227);
     background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);"
-      // margin="0"
       minH="100%"
       height="100%"
       width="full"
@@ -70,15 +66,7 @@ function FormularioLogin() {
         justifySelf="center"
         alignContent="center"
         bgColor="white"
-      >
-        <Image
-          borderRadius="full"
-          boxShadow="md"
-          boxSize="50px"
-          src="https://www.protectivelife.com.bd/images/icons/Signin.png"
-          fallbackSrc="https://via.placeholder.com/150"
-          alt="login vector"
-        />
+      >{loginImg()}
         <Text p="3"> Bem-vindo ao EstoqueFácil! </Text>
         <Stack h="auto" w="100%" spacing={2}>
           <InputGroup>
@@ -93,7 +81,7 @@ function FormularioLogin() {
 
           <InputGroup>
             <Input
-            value={password}
+              value={password}
               boxSizing="content-box"
               required
               type="senha"
@@ -102,7 +90,9 @@ function FormularioLogin() {
           </InputGroup>
           <InputGroup justifyContent="center">
             <Link className="login-link" href="/conta" as="/minhaconta">
-              <Button w="50%">Login</Button>
+              <Button w="50%">
+                Login
+              </Button>
             </Link>
           </InputGroup>
         </Stack>

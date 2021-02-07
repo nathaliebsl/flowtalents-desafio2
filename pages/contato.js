@@ -7,9 +7,13 @@ function Contato() {
   return (
     <>
       <ContatoUsuario />
-      {/* <FormularioContato /> */}
+      <FormularioContato aoEnviar={aoEnviarForm} />
     </>
   );
+}
+
+function aoEnviarForm(dados) {
+  console.log(dados);
 }
 
 export default Contato;

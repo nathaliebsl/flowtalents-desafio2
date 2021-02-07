@@ -1,61 +1,126 @@
-// import { Button, TextField } from "@material-ui/core";
-// import React, { useState, useContext } from "react";
-// import ValidacoesCadastro from "../../context/ValidacoesCadastro";
-// import useErros from "../../hooks/useErros"
+import React, { useEffect, useState } from "react";
+import {
+  Flex,
+  Container,
+  Input,
+  Stack,
+  InputGroup,
+  Button,
+  Text,
+  Box,
+  Textarea,
+} from "@chakra-ui/react";
+import feedbackImg from "../../assets/img/convo.js";
 
-// function FormularioContato({ aoEnviar }) {
-//   const [email, setEmail] = useState("");
-//   const [senha, setSenha] = useState("");
-//   const validacoes = useContext(ValidacoesCadastro);
-//   const [erros, validarCampos, possoEnviar] = useErros(validacoes);
+function FormularioContato({ aoEnviar }) {
+  const [nome, setNome] = useState("");
+  const [mercado, setMercado] = useState("");
+  const [sugestao, setSugestao] = useState("");
+  //   const [erros, validarCampos, possoEnviar] = useErros(validacoes);
 
-//   return (
-//     <form
-//       onSubmit={(event) => {
-//         event.preventDefault();
-//         if (possoEnviar()) {
-//           aoEnviar({ email, senha });
-//         }
-//       }}
-//     >
-//       <TextField
-//         value={email}
-//         onChange={(event) => {
-//           setEmail(event.target.value);
-//         }}
-//         required
-//         name="email"
-//         autoComplete="username"
-//         id="email"
-//         label="e-mail"
-//         type="email"
-//         variant="outlined"
-//         margin="normal"
-//         fullWidth
-//       />
-//       <TextField
-//         value={senha}
-//         onChange={(event) => {
-//           setSenha(event.target.value);
-//         }}
-//         onBlur={validarCampos}
-//         error={!erros.senha.valido}
-//         helperText={erros.senha.texto}
-//         required
-//         name="senha"
-//         autoComplete="current-password"
-//         id="senha"
-//         label="senha"
-//         type="password"
-//         variant="outlined"
-//         margin="normal"
-//         fullWidth
-//       />
-//       <Button type="submit" variant="contained" color="secondary">
-//         Próximo
-//       </Button>
-//     </form>
-//   );
-// }
+  return (
+    <Box
+      bgColor="whiteAlpha.100"
+      mt="16"
+      mr="2"
+      ml="2"
+      borderRadius="base"
+      borderStyle="hidden"
+      borderWidth="1px"
+      overflow="scroll"
+    >
+      <Container
+        p="10"
+        margin="auto"
+        border="1px"
+        borderRadius="base"
+        borderStyle="hidden"
+        maxW="sm"
+        minW="sm"
+        minH="sm"
+        maxH="auto"
+        centerContent="true"
+        justifySelf="center"
+        alignContent="center"
+        bgColor="rgb(27,60,227);
+    background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);"
+      >
+        {feedbackImg()}
+        <Text color="white" p="3">
+          Nos ajude a melhorar!
+          <br /> Deixe a sua sugestão:{" "}
+        </Text>
+        <Stack h="auto" w="100%" spacing={2}>
+          <InputGroup>
+            <Input
+              // variant="filled"
+              bgColor="white"
+              textColor="black"
+              focusBorderColor="#F56565"
+              value={nome}
+              onChange={(event) => {
+                setNome(event.target.value);
+              }}
+              isRequired
+              box-sizing="content-box"
+              type="name"
+              placeholder="Seu nome"
+            />
+          </InputGroup>
 
-// export default FormularioContato;
+          <InputGroup>
+            <Input
+              value={mercado}
+              onChange={(event) => {
+                setMercado(event.target.value);
+              }}
+              bgColor="white"
+              textColor="black"
+              focusBorderColor="#F56565"
+              boxSizing="content-box"
+              isRequired
+              type="companyName"
+              placeholder="Nome do seu mercado"
+            />
+          </InputGroup>
+          <InputGroup>
+            <Textarea
+              h="20"
+              value={sugestao}
+              onChange={(event) => {
+                setSugestao(event.target.value);
+              }}
+              bgColor="white"
+              textColor="black"
+              focusBorderColor="#F56565"
+              boxSizing="content-box"
+              isRequired
+              type="suggestionbox"
+              placeholder="Deixe aqui sua sugestão de produto"
+            ></Textarea>
+            {/* <Input
+            
+              h="20"
+              value={sugestao}
+              onChange={(event) => {
+                setSugestao(event.target.value);
+              }}
+              bgColor="white"
+              textColor="black"
+              focusBorderColor="#F56565"
+              boxSizing="content-box"
+              isRequired
+              type="suggestionbox"
+              placeholder="Deixe aqui sua sugestão de produto"
+            /> */}
+          </InputGroup>
+          <InputGroup justifyContent="center">
+            <Button w="40%">Enviar</Button>
+          </InputGroup>
+        </Stack>
+      </Container>
+    </Box>
+  );
+}
+
+export default FormularioContato;
