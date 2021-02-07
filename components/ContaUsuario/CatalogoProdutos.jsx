@@ -19,7 +19,7 @@ import { AddIcon, StarIcon } from "@chakra-ui/icons";
 
 function CatalogoProdutos() {
   const [products, setProducts] = useState([]);
-  const [favorito, setFavorito] = useState(false);
+  const [favorito, setFavorito] = useState(true);
   const [rating, setRating] = useState();
 
   function getProducts() {
@@ -43,7 +43,7 @@ function CatalogoProdutos() {
         favorito: e,
       }),
     }).then(() => {
-      setFavorito();
+      setFavorito(e);
     });
   }
 
@@ -80,7 +80,6 @@ function CatalogoProdutos() {
         rating,
         image,
         category,
-        favorito,
       } = product;
       return (
         <Tr key={id}>
@@ -120,7 +119,6 @@ function CatalogoProdutos() {
           <Td textAlign="center">
             <Checkbox
               onChange={(event) => {
-                console.log(id);
                 isFavorito(event.target.checked, id);
               }}
               defaultChecked={favorito}

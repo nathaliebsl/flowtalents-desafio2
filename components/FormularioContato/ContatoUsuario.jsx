@@ -13,7 +13,6 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import easyWhImg from "../../assets/img/easywh";
 
 function ContatoUsuario() {
   return (
@@ -26,6 +25,7 @@ function ContatoUsuario() {
         borderBottomRadius="base"
         m="0"
         p="2"
+        overflow="scroll"
       >
         <Box p="2">
           <Heading fontStyle="italic" color="Highlight" size="md">

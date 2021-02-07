@@ -17,7 +17,7 @@ function FormularioContato({ aoEnviar }) {
   const [nome, setNome] = useState("");
   const [mercado, setMercado] = useState("");
   const [sugestao, setSugestao] = useState("");
-  //   const [erros, validarCampos, possoEnviar] = useErros(validacoes);
+
 
   function postFeedback(e, n, m, s) {
     console.log(e, n, m, s);
@@ -38,9 +38,6 @@ function FormularioContato({ aoEnviar }) {
       console.log(nome, mercado, sugestao);
     });
   }
-
-  // useEffect(() => {
-  // }, []);
 
   return (
     <Box

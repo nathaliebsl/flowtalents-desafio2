@@ -25,6 +25,7 @@ function ContaUsuario() {
         borderBottomRadius="base"
         m="0"
         p="2"
+        overflow="scroll"
       >
         <Box p="2">
           <Heading color="Highlight" fontStyle="italic" size="md">
