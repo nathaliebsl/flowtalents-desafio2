@@ -20,16 +20,25 @@ function FormularioContato({ aoEnviar }) {
 
   return (
     <Box
-      position="static"
       bgColor="whiteAlpha.100"
       mt="10"
-      bottom="0"
-      top="0"
-      right="0"
-      left="0"
+      mr="2"
+      ml="2"
       borderRadius="base"
-      borderStyle="hidden"
       borderWidth="1px"
+      borderRadius="lg"
+      borderColor="transparent"
+      overflow="scroll"
+    //   position="static"
+    //   bgColor="whiteAlpha.100"
+    //   mt="10"
+    //   bottom="0"
+    //   top="0"
+    //   right="0"
+    //   left="0"
+    //   borderRadius="base"
+    //   borderStyle="hidden"
+    //   borderWidth="1px"
     >
       <Container
         p="10"
