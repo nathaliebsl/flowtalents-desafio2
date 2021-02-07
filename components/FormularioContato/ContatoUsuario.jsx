@@ -41,7 +41,6 @@ function ContatoUsuario() {
                   borderRadius="full"
                   variant="outline"
                   colorScheme="twitter"
-                  mr="2"
                 >
                   Minha Conta
                 </Button>

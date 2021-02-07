@@ -9,6 +9,7 @@ import {
   Text,
   Box,
   Textarea,
+  FormControl,
 } from "@chakra-ui/react";
 import feedbackImg from "../../assets/img/convo.js";
 
@@ -17,6 +18,29 @@ function FormularioContato({ aoEnviar }) {
   const [mercado, setMercado] = useState("");
   const [sugestao, setSugestao] = useState("");
   //   const [erros, validarCampos, possoEnviar] = useErros(validacoes);
+
+  function postFeedback(e, n, m, s) {
+    console.log(e, n, m, s);
+    fetch(`https://challenge-products-api.herokuapp.com/sugestoes`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name: n,
+        storeName: m,
+        suggestion: s,
+      }),
+    }).then(() => {
+      setNome("");
+      setMercado("");
+      setSugestao("")
+      console.log(nome, mercado, sugestao);
+    });
+  }
+
+  // useEffect(() => {
+  // }, []);
 
   return (
     <Box
@@ -29,30 +53,21 @@ function FormularioContato({ aoEnviar }) {
       borderRadius="lg"
       borderColor="transparent"
       overflow="scroll"
-    //   position="static"
-    //   bgColor="whiteAlpha.100"
-    //   mt="10"
-    //   bottom="0"
-    //   top="0"
-    //   right="0"
-    //   left="0"
-    //   borderRadius="base"
-    //   borderStyle="hidden"
-    //   borderWidth="1px"
     >
       <Container
         p="10"
         margin="auto"
         border="1px"
-        borderRadius="base"
+        borderRadius="2xl"
         borderStyle="hidden"
         maxW="sm"
         minW="sm"
         minH="sm"
         maxH="auto"
         centerContent="true"
-        justifySelf="center"
-        alignContent="center"
+        overflow="scroll"
+        // justifySelf="center"
+        // alignContent="center"
         bgColor="rgb(27,60,227);
     background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);"
       >
@@ -61,13 +76,23 @@ function FormularioContato({ aoEnviar }) {
           Nos ajude a melhorar!
           <br /> Deixe a sua sugestão:{" "}
         </Text>
-        <Stack h="auto" w="100%" spacing={2}>
+        <Stack
+          onSubmit={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            postFeedback(event, nome, mercado, sugestao);
+          }}
+          as="form"
+          h="auto"
+          w="100%"
+          spacing={2}
+        >
           <InputGroup>
             <Input
               // variant="filled"
               bgColor="white"
               textColor="black"
-              focusBorderColor="#F56565"
+              focusBorderColor="blue.200"
               value={nome}
               onChange={(event) => {
                 setNome(event.target.value);
@@ -87,7 +112,7 @@ function FormularioContato({ aoEnviar }) {
               }}
               bgColor="white"
               textColor="black"
-              focusBorderColor="#F56565"
+              focusBorderColor="blue.200"
               boxSizing="content-box"
               isRequired
               type="companyName"
@@ -103,7 +128,7 @@ function FormularioContato({ aoEnviar }) {
               }}
               bgColor="white"
               textColor="black"
-              focusBorderColor="#F56565"
+              focusBorderColor="blue.200"
               boxSizing="content-box"
               isRequired
               type="suggestionbox"
@@ -111,7 +136,9 @@ function FormularioContato({ aoEnviar }) {
             ></Textarea>
           </InputGroup>
           <InputGroup justifyContent="center">
-            <Button w="40%">Enviar</Button>
+            <Button type="submit" w="40%">
+              Enviar
+            </Button>
           </InputGroup>
         </Stack>
       </Container>

@@ -36,7 +36,7 @@ function ContaUsuario() {
           <WrapItem>
             <Stack align="center" direction="row" color="whiteAlpha.800"> 
             <Link href="/contato">
-              <Button borderRadius="full" variant="outline" colorScheme="twitter" mr="2">
+              <Button borderRadius="full" variant="outline" colorScheme="twitter" >
                 Contato
               </Button>
               </Link> 
