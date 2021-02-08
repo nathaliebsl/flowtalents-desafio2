@@ -13,13 +13,13 @@ import Link from "next/link";
 import loginImg from "../../assets/img/login.js"
 
 function FormularioLogin() {
-  const [user, setUser] = useState("viaflow");
-  const [password, setPW] = useState(12345);
+  const [user, setUser] = useState("");
+  const [password, setPW] = useState("");
 
-  function logUser(user, password) {
-    console.log(user, password);
+  function logUser(e, user, password) {
+    console.log(e, user, password);
     fetch(`https://challenge-products-api.herokuapp.com/login`, {
-      method: "PUT",
+      method: "POST",
       headers: {
         "Content-type": "application/json",
       },
@@ -27,17 +27,18 @@ function FormularioLogin() {
         login: user,
         password: password,
       }),
-    }).then(() => {
-      // setUser();
-      // setPW();
+    }).then((response) => {
+      console.log(response)
+      console.log(response.redirected);
+      console.log(response.status);
+      return response.status;
+      
+    }).then((status) => {
+      console.log(status)
+      setUser("");
+      setPW("");
     });
   }
-
-  // useEffect(() => {
-  //   logUser();
-  // }, []);
-
-  console.log(logUser(user, password));
 
   return (
     <Flex
@@ -68,32 +69,42 @@ function FormularioLogin() {
         bgColor="white"
       >{loginImg()}
         <Text p="3"> Bem-vindo ao EstoqueFácil! </Text>
-        <Stack h="auto" w="100%" spacing={2}>
+        <Stack onSubmit={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            logUser(event, user, password)
+          }} as="form" h="auto" w="100%" spacing={2}>
           <InputGroup>
             <Input
               value={user}
-              required
+              onChange={(event) => {
+                setUser(event.target.value);
+              }}
+              isRequired
               box-sizing="content-box"
               type="user"
-              placeholder="username"
+              placeholder="username: viaflow"
             />
           </InputGroup>
 
           <InputGroup>
             <Input
               value={password}
+              onChange={(event) => {
+                setPW(event.target.value);
+              }}
               boxSizing="content-box"
-              required
+              isRequired
               type="senha"
-              placeholder="senha"
+              placeholder="senha: 12345"
             />
           </InputGroup>
           <InputGroup justifyContent="center">
-            <Link className="login-link" href="/conta" as="/minhaconta">
-              <Button w="50%">
+            {/* <Link className="login-link" href="/conta" as="/minhaconta"> */}
+              <Button type="submit" w="50%">
                 Login
               </Button>
-            </Link>
+            {/* </Link> */}
           </InputGroup>
         </Stack>
       </Container>

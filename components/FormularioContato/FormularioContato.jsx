@@ -9,7 +9,8 @@ import {
   Text,
   Box,
   Textarea,
-  FormControl,
+  useToast,
+  createStandaloneToast,
 } from "@chakra-ui/react";
 import feedbackImg from "../../assets/img/convo.js";
 
@@ -38,6 +39,18 @@ function FormularioContato({ aoEnviar }) {
       console.log(nome, mercado, sugestao);
     });
   }
+
+  function formEnviado() {
+    const toast = createStandaloneToast()
+        toast({
+          title: "Obrigada!",
+          description: "Sua sugestão de Produto(s) foi enviada para o EstoqueFácil",
+          status: "success",
+          duration: 5000,
+          position: "top",
+          isClosable: true,
+        })
+      }
 
   return (
     <Box
@@ -75,6 +88,7 @@ function FormularioContato({ aoEnviar }) {
         </Text>
         <Stack
           onSubmit={(event) => {
+            formEnviado();
             event.preventDefault();
             event.stopPropagation();
             postFeedback(event, nome, mercado, sugestao);
