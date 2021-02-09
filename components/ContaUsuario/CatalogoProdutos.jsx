@@ -148,13 +148,14 @@ function CatalogoProdutos() {
       mt="10"
       mr="2"
       ml="2"
-      borderRadius="base"
+      mb="10"
+      borderRadius="2xl"
       borderWidth="1px"
-      borderRadius="lg"
+      borderRadius="base"
       overflow="scroll"
     >
       <Table variant="simple">
-        <TableCaption>Catálogo de Produtos</TableCaption>
+        <TableCaption fontSize="lg"  borderBottomRadius="base" placement="top" m="0" >Catálogo de Produtos</TableCaption>
         <Thead>
           <Tr>
             <Th textAlign="center"></Th>

@@ -102,7 +102,7 @@ function FormularioLogin() {
               }}
               isRequired
               box-sizing="content-box"
-              type="user"
+              type="username"
               placeholder="username: viaflow"
             />
           </InputGroup>
@@ -115,7 +115,7 @@ function FormularioLogin() {
               }}
               boxSizing="content-box"
               isRequired
-              type="senha"
+              type="password"
               placeholder="senha: 12345"
             />
           </InputGroup>

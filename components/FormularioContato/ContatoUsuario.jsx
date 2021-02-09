@@ -43,7 +43,7 @@ function ContatoUsuario() {
                   variant="outline"
                   colorScheme="twitter"
                 >
-                  Minha Conta
+                  Home
                 </Button>
               </Link>
               <Spacer />
