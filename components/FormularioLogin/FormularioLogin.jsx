@@ -32,12 +32,11 @@ function FormularioLogin() {
     }).then((response) => {
       console.log(response.status);
       if (response.status == 200) {
-        router.push("/conta");
+        router.replace("/conta", "/usuario", { shallow: true })
       } else {
         userNotfound();
         setUser("");
         setPW("");
-        throw console.error("usuario nao cadastrado");
       }
     });
   }

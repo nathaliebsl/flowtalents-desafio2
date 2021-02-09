@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import feedbackImg from "../../assets/img/convo.js";
 
-function FormularioContato({ aoEnviar }) {
+function FormularioContato() {
   const [nome, setNome] = useState("");
   const [mercado, setMercado] = useState("");
   const [sugestao, setSugestao] = useState("");
