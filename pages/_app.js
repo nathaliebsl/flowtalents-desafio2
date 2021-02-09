@@ -8,7 +8,6 @@ function MyApp({ Component, pageProps }) {
     <>
       <ChakraProvider>
       <Head>
-        {/* <title>EstoqueFácil | Teste</title> */}
         <link rel="icon" href="/static/favicon.ico" />
       </Head>
         <Component {...pageProps} />
