@@ -24,10 +24,10 @@ function ContatoUsuario() {
   background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);"
         borderBottomRadius="base"
         m="0"
-        p="2"
+        p="3"
         overflow="scroll"
       >
-        <Box p="2">
+        <Box mr="2" p="1">
           <Heading fontStyle="italic" color="Highlight" size="md">
             EstoqueFácil
           </Heading>
@@ -38,6 +38,7 @@ function ContatoUsuario() {
             <Stack align="center" direction="row" color="whiteAlpha.800">
               <Link href="/conta" as="/">
                 <Button
+                size="sm"
                   borderRadius="full"
                   variant="outline"
                   colorScheme="twitter"
@@ -45,6 +46,7 @@ function ContatoUsuario() {
                   Minha Conta
                 </Button>
               </Link>
+              <Spacer />
               <Button size="sm" colorScheme="white" variant="ghost">
                 <Avatar
                   mr="2"

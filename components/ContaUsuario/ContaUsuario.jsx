@@ -18,16 +18,16 @@ function ContaUsuario() {
   return (
     <>
       <Flex
-        border="1px"
-        borderStyle="hidden"
-        bgColor="rgb(27,60,227);
+          border="1px"
+          borderStyle="hidden"
+          bgColor="rgb(27,60,227);
     background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);"
-        borderBottomRadius="base"
-        m="0"
-        p="2"
-        overflow="scroll"
+          borderBottomRadius="base"
+          m="0"
+          p="3"
+          overflow="scroll"
       >
-        <Box p="2">
+        <Box mr="2" p="1">
           <Heading color="Highlight" fontStyle="italic" size="md">
             EstoqueFácil
           </Heading>
@@ -37,10 +37,11 @@ function ContaUsuario() {
           <WrapItem>
             <Stack align="center" direction="row" color="whiteAlpha.800"> 
             <Link href="/contato"  as="/"  >
-              <Button borderRadius="full" variant="outline" colorScheme="twitter" >
+              <Button size="sm" borderRadius="full" variant="outline" colorScheme="twitter" >
                 Contato
               </Button>
               </Link> 
+              <Spacer />
               <Button colorScheme="white" size="sm"  variant="ghost" >
               <Avatar
                 mr="2"
