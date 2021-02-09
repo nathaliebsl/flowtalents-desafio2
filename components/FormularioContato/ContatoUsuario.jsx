@@ -36,7 +36,7 @@ function ContatoUsuario() {
         <Wrap>
           <WrapItem>
             <Stack align="center" direction="row" color="whiteAlpha.800">
-              <Link href="/conta" as="/usuario">
+              <Link href="/conta" as="/">
                 <Button
                   borderRadius="full"
                   variant="outline"

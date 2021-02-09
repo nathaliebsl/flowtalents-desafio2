@@ -32,7 +32,7 @@ function FormularioLogin() {
     }).then((response) => {
       console.log(response.status);
       if (response.status == 200) {
-        router.replace("/conta", "/usuario", { shallow: true })
+        router.replace("/conta", "/", { shallow: true })
       } else {
         userNotfound();
         setUser("");

@@ -109,14 +109,16 @@ function CatalogoProdutos() {
           <Td textAlign="center">{category}</Td>
           <Td textAlign="center">{description}</Td>
           <Td textAlign="center">
-            <ButtonGroup size="sm" isAttached variant="outline">
+            <ButtonGroup size="sm"  variant="outline">
               <Button
+              borderStyle="hidden"
                 mr="-px"
                 leftIcon={<StarIcon mb="3px" mt="1px" color="goldenrod" />}
               >
                 {rating}
               </Button>
               <IconButton
+              
                 onClick={(event) => {
                   isRelevant(event, product);
                 }}
@@ -128,12 +130,11 @@ function CatalogoProdutos() {
           <Td textAlign="center">
             <Checkbox
               onChange={(event) => {
-                setFavorito(event)
+                setFavorito(event.target.checked)
                 isFavorito(event.target.checked, id);
                 }}
               checked={favorito}
-              colorScheme="red"
-              border="ButtonHighlight"
+              colorScheme="green"
             ></Checkbox>
           </Td>
         </Tr>
