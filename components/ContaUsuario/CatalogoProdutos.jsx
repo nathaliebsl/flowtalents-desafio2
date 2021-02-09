@@ -19,8 +19,9 @@ import { AddIcon, StarIcon } from "@chakra-ui/icons";
 
 function CatalogoProdutos() {
   const [products, setProducts] = useState([]);
-  const [favorito, setFavorito] = useState(true);
-  const [rating, setRating] = useState();
+  const [favoritos, setFavoritos] = useState([]);
+  const [favorito, setFavorito] = useState();
+  // const [rating, setRating] = useState();
 
   function getProducts() {
     fetch("https://challenge-products-api.herokuapp.com/produtos")
@@ -29,6 +30,17 @@ function CatalogoProdutos() {
       })
       .then((json) => {
         setProducts(json);
+      });
+  }
+
+  function getFavoritos() {
+    fetch("https://601b1b840ee87c001706b013.mockapi.io/products")
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        setFavoritos(json);
+        console.log(json);
       });
   }
 
@@ -43,7 +55,8 @@ function CatalogoProdutos() {
         favorito: e,
       }),
     }).then(() => {
-      setFavorito(e);
+      setFavoritos();
+      getFavoritos();
     });
   }
 
@@ -62,25 +75,21 @@ function CatalogoProdutos() {
         }),
       }
     ).then(() => {
-      setRating();
+      // setRating();
       getProducts();
     });
   }
 
   useEffect(() => {
     getProducts();
+    getFavoritos();
   }, []);
+
+
 
   function renderTableData() {
     return products.map((product) => {
-      const {
-        id,
-        title,
-        description,
-        rating,
-        image,
-        category,
-      } = product;
+      const { id, title, description, rating, image, category } = product;
       return (
         <Tr key={id}>
           <Td textAlign="center">
@@ -119,9 +128,9 @@ function CatalogoProdutos() {
           <Td textAlign="center">
             <Checkbox
               onChange={(event) => {
+                setFavorito(event)
                 isFavorito(event.target.checked, id);
-              }}
-              defaultChecked={favorito}
+                }}
               checked={favorito}
               colorScheme="red"
               border="ButtonHighlight"

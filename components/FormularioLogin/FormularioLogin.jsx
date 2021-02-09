@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import {
   Flex,
   Container,
@@ -6,15 +7,16 @@ import {
   Stack,
   InputGroup,
   Button,
-  Image,
+  createStandaloneToast,
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import loginImg from "../../assets/img/login.js"
+import loginImg from "../../assets/img/login.js";
 
 function FormularioLogin() {
   const [user, setUser] = useState("");
   const [password, setPW] = useState("");
+  const router = useRouter();
 
   function logUser(e, user, password) {
     console.log(e, user, password);
@@ -28,17 +30,29 @@ function FormularioLogin() {
         password: password,
       }),
     }).then((response) => {
-      console.log(response)
-      console.log(response.redirected);
       console.log(response.status);
-      return response.status;
-      
-    }).then((status) => {
-      console.log(status)
-      setUser("");
-      setPW("");
+      if (response.status == 200) {
+        router.push("/conta");
+      } else {
+        userNotfound();
+        setUser("");
+        setPW("");
+        throw console.error("usuario nao cadastrado");
+      }
     });
   }
+
+  function userNotfound() {
+    const toast = createStandaloneToast()
+        toast({
+          title: "Usuário ou Senha inválidos",
+          description: "Por favor tente novamente",
+          status: "error",
+          duration: 5000,
+          position: "top",
+          isClosable: true,
+        })
+      }
 
   return (
     <Flex
@@ -67,13 +81,20 @@ function FormularioLogin() {
         justifySelf="center"
         alignContent="center"
         bgColor="white"
-      >{loginImg()}
+      >
+        {loginImg()}
         <Text p="3"> Bem-vindo ao EstoqueFácil! </Text>
-        <Stack onSubmit={(event) => {
+        <Stack
+          onSubmit={(event) => {
             event.preventDefault();
             event.stopPropagation();
-            logUser(event, user, password)
-          }} as="form" h="auto" w="100%" spacing={2}>
+            logUser(event, user, password);
+          }}
+          as="form"
+          h="auto"
+          w="100%"
+          spacing={2}
+        >
           <InputGroup>
             <Input
               value={user}
@@ -100,11 +121,9 @@ function FormularioLogin() {
             />
           </InputGroup>
           <InputGroup justifyContent="center">
-            {/* <Link className="login-link" href="/conta" as="/minhaconta"> */}
-              <Button type="submit" w="50%">
-                Login
-              </Button>
-            {/* </Link> */}
+            <Button type="submit" w="50%">
+              Login
+            </Button>
           </InputGroup>
         </Stack>
       </Container>
