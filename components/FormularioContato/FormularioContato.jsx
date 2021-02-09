@@ -43,7 +43,7 @@ function FormularioContato() {
   function formEnviado() {
     const toast = createStandaloneToast()
         toast({
-          title: "Obrigada!",
+          title: "Obrigado!",
           description: "Sua sugestão de Produto(s) foi enviada para o EstoqueFácil",
           status: "success",
           duration: 5000,

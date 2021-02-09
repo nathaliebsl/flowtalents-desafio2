@@ -42,7 +42,7 @@ function ContaUsuario() {
               </Button>
               </Link> 
               <Spacer />
-              <Button colorScheme="white" size="sm"  variant="ghost" >
+              <Button colorScheme="white" size="xs"  variant="ghost" >
               <Avatar
                 mr="2"
                 size="sm"
@@ -50,7 +50,7 @@ function ContaUsuario() {
                 color="black"
                 name="Via Flow"
               />
-              <Text>ViaFlow</Text>
+              <Text textTransform="uppercase" >ViaFlow</Text>
               </Button>
             </Stack>
           </WrapItem>

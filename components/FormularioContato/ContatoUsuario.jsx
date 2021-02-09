@@ -11,6 +11,10 @@ import {
   WrapItem,
   Text,
   Stack,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem
 } from "@chakra-ui/react";
 import Link from "next/link";
 
@@ -38,7 +42,7 @@ function ContatoUsuario() {
             <Stack align="center" direction="row" color="whiteAlpha.800">
               <Link href="/conta" as="/">
                 <Button
-                size="sm"
+                  size="sm"
                   borderRadius="full"
                   variant="outline"
                   colorScheme="twitter"
@@ -47,15 +51,15 @@ function ContatoUsuario() {
                 </Button>
               </Link>
               <Spacer />
-              <Button size="sm" colorScheme="white" variant="ghost">
-                <Avatar
-                  mr="2"
-                  size="sm"
-                  bgColor="Highlight"
-                  color="black"
-                  name="Via Flow"
-                />
-                <Text>ViaFlow</Text>
+              <Button colorScheme="white" size="xs"  variant="ghost" >
+              <Avatar
+                mr="2"
+                size="sm"
+                bgColor="Highlight"
+                color="black"
+                name="Via Flow"
+              />
+              <Text textTransform="uppercase" >ViaFlow</Text>
               </Button>
             </Stack>
           </WrapItem>
