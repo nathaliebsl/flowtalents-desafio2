@@ -1,13 +1,17 @@
 import MyApp from "./_app";
 import React from "react";
 import FormularioLogin from "../components/FormularioLogin/FormularioLogin"
+import Head from "next/head";
+
 
 
 
 function Index() {
   return (
     <>
-    <title>EstoqueFácil | Login</title>
+     <Head>
+        <title>EstoqueFácil | Login</title>
+      </Head>
       <MyApp Component={FormularioLogin} />
     </>
   );
