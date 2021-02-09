@@ -1,19 +1,15 @@
-
 import React from "react";
 import ContatoUsuario from "../components/FormularioContato/ContatoUsuario";
-import FormularioContato from "../components/FormularioContato/FormularioContato"
+import FormularioContato from "../components/FormularioContato/FormularioContato";
 
 function Contato() {
   return (
     <>
+      <title>EstoqueFácil | Contato</title>
       <ContatoUsuario />
-      <FormularioContato aoEnviar={aoEnviarForm} />
+      <FormularioContato />
     </>
   );
-}
-
-function aoEnviarForm(dados) {
-  console.log(dados);
 }
 
 export default Contato;

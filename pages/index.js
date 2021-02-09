@@ -7,6 +7,7 @@ import FormularioLogin from "../components/FormularioLogin/FormularioLogin"
 function Index() {
   return (
     <>
+    <title>EstoqueFácil | Login</title>
       <MyApp Component={FormularioLogin} />
     </>
   );

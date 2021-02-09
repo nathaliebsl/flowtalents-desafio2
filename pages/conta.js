@@ -8,6 +8,7 @@ function HomeUsuario() {
 
         
         <>
+        <title>EstoqueFácil | Home</title>
             <ContaUsuario />
             <CatalogoProdutos />
         </>
