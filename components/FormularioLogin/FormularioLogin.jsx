@@ -30,7 +30,7 @@ function FormularioLogin() {
         password: password,
       }),
     }).then((response) => {
-      console.log("Server response status: " + response.status);
+      // console.log("Server response status: " + response.status);
       if (response.status == 200) {
         router.replace("/conta", "/", { shallow: true });
       } else {

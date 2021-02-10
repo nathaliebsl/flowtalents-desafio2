@@ -34,8 +34,8 @@ function FormularioContato() {
       setNome("");
       setMercado("");
       setSugestao("");
-      console.log("Server response status: " + res.status);
-      console.log(nome, mercado, sugestao);
+      // console.log("Server response status: " + res.status);
+      // console.log(nome, mercado, sugestao);
     });
   }
 
@@ -131,7 +131,7 @@ function FormularioContato() {
           </InputGroup>
           <InputGroup>
             <Textarea
-            aria-label="feedback-form-input"
+              aria-label="feedback-form-input"
               h="20"
               value={sugestao}
               onChange={(event) => {
@@ -147,7 +147,13 @@ function FormularioContato() {
             ></Textarea>
           </InputGroup>
           <InputGroup justifyContent="center">
-            <Button aria-label="feedback-form-submit" type="submit" w="40%">
+            <Button
+              aria-label="feedback-form-submit"
+              type="submit"
+              colorScheme="pink"
+              textColor="white"
+              w="40%"
+            >
               Enviar
             </Button>
           </InputGroup>

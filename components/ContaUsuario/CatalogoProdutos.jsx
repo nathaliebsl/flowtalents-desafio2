@@ -45,7 +45,7 @@ function CatalogoProdutos() {
   // }
 
   function isFavorito(e, id) {
-    console.log(e, id);
+    // console.log(e, id);
     fetch(`https://601b1b840ee87c001706b013.mockapi.io/products/${id}`, {
       method: "PUT",
       headers: {
