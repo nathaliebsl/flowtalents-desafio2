@@ -12,7 +12,7 @@ Clone o projeto com o seguinte comando:
 git clone https://github.com/nathaliebsl/flowtalents-desafio2.git
 ```
 
-Entre na pasta utilizando a sua IDE:
+Entre na pasta do projeto utilizando a sua IDE:
 ```
 cd flowtalents-desafio2
 npm
