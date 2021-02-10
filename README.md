@@ -27,14 +27,14 @@ Rode a applicação:
 ```
 npm run dev
 ```
-``
+```
 A App estará rodando em:
 url: http://localhost:3000
 
 Para acessar a Home:
 username: viaflow 
 password: 12345
-``
+```
 
 ### Author
 **Nathalie Leal**
