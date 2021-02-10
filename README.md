@@ -6,7 +6,7 @@ link do site:
 https://flowtalents-desafio2.vercel.app/
 
 ### Instalação
-Clone o projeto com o seguinte comando:
+Clone o projeto utilizando o comando abaixo:
 
 ```
 git clone https://github.com/nathaliebsl/flowtalents-desafio2.git
