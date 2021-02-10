@@ -23,6 +23,6 @@ url: http://localhost:3000
 ```
 
 ### Author
-** Nathalie Leal **
+**Nathalie Leal**
 * Github: [@nathaliebsl] (http://github/nathaliebsl)
 * Linkedin [@nathaliebsl] (https://www.linkedin.com/in/nathaliebsl)
