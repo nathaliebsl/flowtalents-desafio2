@@ -2,7 +2,7 @@
 
 Desafio 2 do programa Flow Talents - Distibuidora de Estoque 
 
-DEMO :point_down: 
+DEMO :point_down: <br></br>
 https://flowtalents-desafio2.vercel.app/
 
 ### Instalação
