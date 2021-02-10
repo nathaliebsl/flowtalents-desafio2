@@ -30,9 +30,9 @@ function FormularioLogin() {
         password: password,
       }),
     }).then((response) => {
-      console.log("Server response status: "+ response.status);
+      console.log("Server response status: " + response.status);
       if (response.status == 200) {
-        router.replace("/conta", "/", { shallow: true })
+        router.replace("/conta", "/", { shallow: true });
       } else {
         userNotfound();
         setUser("");
@@ -42,16 +42,16 @@ function FormularioLogin() {
   }
 
   function userNotfound() {
-    const toast = createStandaloneToast()
-        toast({
-          title: "Usuário ou Senha inválidos",
-          description: "Por favor tente novamente",
-          status: "error",
-          duration: 5000,
-          position: "top",
-          isClosable: true,
-        })
-      }
+    const toast = createStandaloneToast();
+    toast({
+      title: "Usuário ou Senha inválidos",
+      description: "Por favor tente novamente",
+      status: "error",
+      duration: 5000,
+      position: "top",
+      isClosable: true,
+    });
+  }
 
   return (
     <Flex
@@ -67,6 +67,7 @@ function FormularioLogin() {
       width="full"
     >
       <Container
+        aria-label="login-container"
         p="14"
         margin="auto"
         border="2px"
@@ -97,6 +98,7 @@ function FormularioLogin() {
         >
           <InputGroup>
             <Input
+              aria-label="username-input"
               value={user}
               onChange={(event) => {
                 setUser(event.target.value);
@@ -111,6 +113,7 @@ function FormularioLogin() {
 
           <InputGroup>
             <Input
+              aria-label="password-input"
               value={password}
               onChange={(event) => {
                 setPW(event.target.value);
@@ -123,11 +126,24 @@ function FormularioLogin() {
             />
           </InputGroup>
           <InputGroup justifyContent="center">
-            <Button colorScheme="facebook" mt="2" type="submit" w="50%">
+            <Button
+              aria-label="login-submit-button"
+              colorScheme="facebook"
+              mt="2"
+              type="submit"
+              w="50%"
+            >
               Login
             </Button>
           </InputGroup>
-          <input size="xs" type="text" autoComplete="username" ng-hide="true" readOnly hidden ></input>
+          <input
+            size="xs"
+            type="text"
+            autoComplete="username"
+            ng-hide="true"
+            readOnly
+            hidden
+          ></input>
         </Stack>
       </Container>
     </Flex>

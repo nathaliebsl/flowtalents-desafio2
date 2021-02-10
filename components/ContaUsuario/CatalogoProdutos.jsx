@@ -106,6 +106,7 @@ function CatalogoProdutos() {
           <Td textAlign="center">
             <ButtonGroup size="sm" variant="outline">
               <Button
+                aria-label="add-relevancia"
                 borderStyle="hidden"
                 mr="-px"
                 leftIcon={<StarIcon mb="3px" mt="1px" color="goldenrod" />}
@@ -116,13 +117,14 @@ function CatalogoProdutos() {
                 onClick={(event) => {
                   isRelevant(event, product);
                 }}
-                aria-label="Add relevância"
+                aria-label="product-add-relevance"
                 icon={<AddIcon />}
               />
             </ButtonGroup>
           </Td>
           <Td textAlign="center">
             <Checkbox
+            aria-label="product-set-favourite"
               onChange={(event) => {
                 setFavorito(event.target.checked);
                 isFavorito(event.target.checked, id);
@@ -148,7 +150,7 @@ function CatalogoProdutos() {
       borderRadius="base"
       overflow="scroll"
     >
-      <Table variant="simple">
+      <Table aria-label="products-table" variant="simple">
         <TableCaption
           fontSize="lg"
           borderBottomRadius="base"

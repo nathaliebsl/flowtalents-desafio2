@@ -17,6 +17,7 @@ function ContatoUsuario() {
   return (
     <>
       <Flex
+        aria-label="user-menu-bar"
         border="1px"
         borderStyle="hidden"
         bgColor="rgb(27,60,227);
@@ -37,6 +38,7 @@ function ContatoUsuario() {
             <Stack align="center" direction="row" color="whiteAlpha.800">
               <Link href="/conta" as="/">
                 <Button
+                  aria-label="home-link-button"
                   size="sm"
                   borderRadius="full"
                   variant="outline"
@@ -46,7 +48,12 @@ function ContatoUsuario() {
                 </Button>
               </Link>
               <Spacer />
-              <Button colorScheme="white" size="xs" variant="ghost">
+              <Button
+                aria-label="logout-button"
+                colorScheme="white"
+                size="xs"
+                variant="ghost"
+              >
                 <Avatar
                   mr="2"
                   size="sm"
