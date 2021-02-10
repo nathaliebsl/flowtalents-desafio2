@@ -1,8 +1,8 @@
-## flowtalents-desafio2 
+## flowtalents-desafio2 :pushpin:
 
 Desafio 2 do programa Flow Talents - Distibuidora de Estoque 
 
-link do site:
+DEMO :point_down: 
 https://flowtalents-desafio2.vercel.app/
 
 ### Instalação
@@ -15,9 +15,16 @@ git clone https://github.com/nathaliebsl/flowtalents-desafio2.git
 Entre na pasta do projeto utilizando a sua IDE:
 ```
 cd flowtalents-desafio2
-npm
-npm run dev
+```
 
+Instale as dependencias do projeto com:
+```
+npm install
+```
+
+Rode a applicação:
+```
+npm run dev
 url: http://localhost:3000
 { username: viaflow, password: 12345 }
 ```
