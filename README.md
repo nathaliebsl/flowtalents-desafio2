@@ -30,7 +30,7 @@ npm run dev
 
 A App estará rodando em:
 ```
-url: http://localhost:3000
+http://localhost:3000
 
 Para acessar a Home:
 username: viaflow 
