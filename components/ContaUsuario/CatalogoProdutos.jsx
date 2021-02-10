@@ -19,9 +19,7 @@ import { AddIcon, StarIcon } from "@chakra-ui/icons";
 
 function CatalogoProdutos() {
   const [products, setProducts] = useState([]);
-  const [favoritos, setFavoritos] = useState([]);
   const [favorito, setFavorito] = useState();
-  // const [rating, setRating] = useState();
 
   function getProducts() {
     fetch("https://challenge-products-api.herokuapp.com/produtos")
@@ -33,16 +31,18 @@ function CatalogoProdutos() {
       });
   }
 
-  function getFavoritos() {
-    fetch("https://601b1b840ee87c001706b013.mockapi.io/products")
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        setFavoritos(json);
-        console.log(json);
-      });
-  }
+  //{ * função pronta para receber propriedade favoritos do Backend *}
+
+  // function getFavoritos() {
+  //   fetch("https://601b1b840ee87c001706b013.mockapi.io/products")
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((json) => {
+  //       setFavoritos(json);
+  //       console.log(json);
+  //     });
+  // }
 
   function isFavorito(e, id) {
     console.log(e, id);
@@ -55,8 +55,7 @@ function CatalogoProdutos() {
         favorito: e,
       }),
     }).then(() => {
-      setFavoritos();
-      getFavoritos();
+      // setFavoritos();
     });
   }
 
@@ -75,17 +74,13 @@ function CatalogoProdutos() {
         }),
       }
     ).then(() => {
-      // setRating();
       getProducts();
     });
   }
 
   useEffect(() => {
     getProducts();
-    getFavoritos();
   }, []);
-
-
 
   function renderTableData() {
     return products.map((product) => {
@@ -109,16 +104,15 @@ function CatalogoProdutos() {
           <Td textAlign="center">{category}</Td>
           <Td textAlign="center">{description}</Td>
           <Td textAlign="center">
-            <ButtonGroup size="sm"  variant="outline">
+            <ButtonGroup size="sm" variant="outline">
               <Button
-              borderStyle="hidden"
+                borderStyle="hidden"
                 mr="-px"
                 leftIcon={<StarIcon mb="3px" mt="1px" color="goldenrod" />}
               >
                 {rating}
               </Button>
               <IconButton
-              
                 onClick={(event) => {
                   isRelevant(event, product);
                 }}
@@ -130,9 +124,9 @@ function CatalogoProdutos() {
           <Td textAlign="center">
             <Checkbox
               onChange={(event) => {
-                setFavorito(event.target.checked)
+                setFavorito(event.target.checked);
                 isFavorito(event.target.checked, id);
-                }}
+              }}
               checked={favorito}
               colorScheme="green"
             ></Checkbox>
@@ -155,7 +149,14 @@ function CatalogoProdutos() {
       overflow="scroll"
     >
       <Table variant="simple">
-        <TableCaption fontSize="lg"  borderBottomRadius="base" placement="top" m="0" >Catálogo de Produtos</TableCaption>
+        <TableCaption
+          fontSize="lg"
+          borderBottomRadius="base"
+          placement="top"
+          m="0"
+        >
+          Catálogo de Produtos
+        </TableCaption>
         <Thead>
           <Tr>
             <Th textAlign="center"></Th>

@@ -19,7 +19,7 @@ function FormularioLogin() {
   const router = useRouter();
 
   function logUser(e, user, password) {
-    console.log(e, user, password);
+    // console.log(e, user, password);
     fetch(`https://challenge-products-api.herokuapp.com/login`, {
       method: "POST",
       headers: {
@@ -30,7 +30,7 @@ function FormularioLogin() {
         password: password,
       }),
     }).then((response) => {
-      console.log(response.status);
+      console.log("Server response status: "+ response.status);
       if (response.status == 200) {
         router.replace("/conta", "/", { shallow: true })
       } else {
@@ -89,6 +89,7 @@ function FormularioLogin() {
             event.stopPropagation();
             logUser(event, user, password);
           }}
+          mt="2"
           as="form"
           h="auto"
           w="100%"
@@ -103,6 +104,7 @@ function FormularioLogin() {
               isRequired
               box-sizing="content-box"
               type="username"
+              ng-hide="true"
               placeholder="username: viaflow"
             />
           </InputGroup>
@@ -116,14 +118,16 @@ function FormularioLogin() {
               boxSizing="content-box"
               isRequired
               type="password"
+              autoComplete="username"
               placeholder="senha: 12345"
             />
           </InputGroup>
           <InputGroup justifyContent="center">
-            <Button type="submit" w="50%">
+            <Button colorScheme="facebook" mt="2" type="submit" w="50%">
               Login
             </Button>
           </InputGroup>
+          <input size="xs" type="text" autoComplete="username" ng-hide="true" readOnly hidden ></input>
         </Stack>
       </Container>
     </Flex>

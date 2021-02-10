@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Flex,
   Container,
@@ -9,7 +9,6 @@ import {
   Text,
   Box,
   Textarea,
-  useToast,
   createStandaloneToast,
 } from "@chakra-ui/react";
 import feedbackImg from "../../assets/img/convo.js";
@@ -21,7 +20,7 @@ function FormularioContato() {
 
 
   function postFeedback(e, n, m, s) {
-    console.log(e, n, m, s);
+    // console.log(e, n, m, s);
     fetch(`https://challenge-products-api.herokuapp.com/sugestoes`, {
       method: "POST",
       headers: {
@@ -32,10 +31,11 @@ function FormularioContato() {
         storeName: m,
         suggestion: s,
       }),
-    }).then(() => {
+    }).then((res) => {
       setNome("");
       setMercado("");
-      setSugestao("")
+      setSugestao("");
+      console.log("Server response status: " + res.status);
       console.log(nome, mercado, sugestao);
     });
   }
@@ -46,7 +46,7 @@ function FormularioContato() {
           title: "Obrigado!",
           description: "Sua sugestão de Produto(s) foi enviada para o EstoqueFácil",
           status: "success",
-          duration: 5000,
+          duration: 3000,
           position: "top",
           isClosable: true,
         })
@@ -76,8 +76,6 @@ function FormularioContato() {
         maxH="auto"
         centerContent="true"
         overflow="scroll"
-        // justifySelf="center"
-        // alignContent="center"
         bgColor="rgb(27,60,227);
     background: radial-gradient(circle, rgba(27,60,227,1) 0%, rgba(19,12,77,1) 100%);"
       >
@@ -100,7 +98,6 @@ function FormularioContato() {
         >
           <InputGroup>
             <Input
-              // variant="filled"
               bgColor="white"
               textColor="black"
               focusBorderColor="blue.200"
